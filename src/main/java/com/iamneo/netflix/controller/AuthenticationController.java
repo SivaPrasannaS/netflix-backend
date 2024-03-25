@@ -15,16 +15,20 @@ import com.iamneo.netflix.dto.response.BasicResponse;
 import com.iamneo.netflix.dto.response.LoginResponse;
 import com.iamneo.netflix.service.AuthenticationService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/netflix/api/v1/authentication")
 @RequiredArgsConstructor
+@Tag(name = "Authentication", description = "It's used to authenticate and authorize the user.")
 public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
 
     @PostMapping("/register")
+    @Operation(summary = "User registration", description = "For the registration process, I collect user credentials such as name, email, and password.")
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest){
         BasicResponse<String> response =  new BasicResponse<>();
         try {
@@ -39,6 +43,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
+    @Operation(summary = "User authentication", description = "Upon successful authentication using user credentials (email and password), a JSON Web Token (JWT) is generated.")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest){
         BasicResponse<LoginResponse> response = new BasicResponse<>();
         try {
@@ -52,6 +57,7 @@ public class AuthenticationController {
     }
 
     @PatchExchange("/forgot-password")
+    @Operation(summary = "Reset user password", description = "For the \"forgot password\" feature, I will collect the user's email, their current password (to verify against the stored password in the database), and the new password along with a confirmation password to reset the user's password.")
     public ResponseEntity<?> forgotPassword(@RequestBody ForgotPasswordRequest forgotPasswordRequest){
         BasicResponse<String> response = new BasicResponse<>();
         try {

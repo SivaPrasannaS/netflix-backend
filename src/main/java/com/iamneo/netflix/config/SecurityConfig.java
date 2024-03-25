@@ -27,7 +27,10 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfig {
 
     private final String[] WHITELIST_URL = {
-        "/netflix/api/v1/authentication/**"
+        "/netflix/api/v1/authentication/**",
+        "/swagger-ui/**",
+        "/swagger-ui.html/",
+        "/v3/api-docs/**"
     };
 
     private final AuthenticationProvider authenticationProvider;

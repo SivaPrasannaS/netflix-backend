@@ -1,7 +1,5 @@
 package com.iamneo.netflix.model;
 
-import static jakarta.persistence.GenerationType.UUID;
-
 import com.iamneo.netflix.enumerated.TokenType;
 
 import jakarta.persistence.CascadeType;
@@ -10,6 +8,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -27,7 +26,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "_token")
 public class Token {
     @Id
-    @GeneratedValue(strategy = UUID)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private String token;
 

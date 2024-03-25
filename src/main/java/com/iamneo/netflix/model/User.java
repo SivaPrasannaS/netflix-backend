@@ -1,7 +1,6 @@
 package com.iamneo.netflix.model;
 
 import static jakarta.persistence.EnumType.STRING;
-import static jakarta.persistence.GenerationType.UUID;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,6 +13,7 @@ import com.iamneo.netflix.enumerated.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -30,7 +30,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "_user")
 public class User implements UserDetails{
     @Id
-    @GeneratedValue(strategy = UUID)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private String name;
     private String email;
